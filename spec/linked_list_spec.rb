@@ -102,6 +102,9 @@ RSpec.describe LinkedList do
             expect(list.includes?("deep")).to eq(true)
             expect(list.includes?("dep")).to eq(false)
 
+            expect(list.pop).to eq("woop")
+            expect(list.pop).to eq("boop")
+
         end
     end
 end

@@ -102,4 +102,17 @@ class LinkedList
         end
         does_include
     end
+
+    def pop
+        lost_value = ""
+        if @head
+            current_node = @head
+            while current_node.next.next != nil
+                current_node = current_node.next
+            end
+            lost_value = current_node.next.data
+            current_node.next = nil
+        end
+        lost_value
+    end
 end

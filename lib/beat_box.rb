@@ -14,4 +14,9 @@ class BeatBox
     def count
         @list.count
     end
+
+    def play
+        beat = @list.to_string
+        system("say -r 500 -v Boing #{beat}")
+    end
 end

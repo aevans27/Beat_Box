@@ -22,4 +22,18 @@ RSpec.describe BeatBox do
             expect(bb.count).to eq(6)
         end
     end
+
+    #Play Music
+    describe "#beatbox music" do
+        it "play beats" do
+            bb = BeatBox.new
+            expect(bb.list.head).to eq(nil)
+            bb.append("deep doo ditt")
+            expect(bb.list.head.data).to eq("deep")
+            bb.append("woo hoo shu")
+            expect(bb.count).to eq(6)
+
+            bb.play
+        end
+    end
 end

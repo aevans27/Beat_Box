@@ -29,15 +29,15 @@ class LinkedList
     end
 
     def count
-        count = 0
+        list_count = 0
         if @head
             current_node = @head
             while current_node != nil
                 current_node = current_node.next
-                count += 1
+                list_count += 1
             end
         end
-        count
+        list_count
     end
 
     def prepend(value)
@@ -71,15 +71,21 @@ class LinkedList
 
     def find(location, range)
         new_string = ""
+        if @head.data == nil
+            return "No beats added"
+        end
+        if (location + range) > count
+            return "Outside of range"
+        end
         if location == 0
             new_string = "#{@head.data}"
         end
-        count = 0
+        list_count = 0
         current_node = @head
         while current_node.next != nil
-            count += 1
+            list_count += 1
             current_node = current_node.next
-            if count >= location && count < (location + range)
+            if list_count >= location && list_count < (location + range)
                 new_string.concat(" #{current_node.data}")
             end
             

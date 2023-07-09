@@ -59,7 +59,7 @@ RSpec.describe LinkedList do
             list.insert("woo", 1)
             expect(list.count).to eq(5)
             expect(list.to_string).to eq("dop woo doop deep boop")
-
+            #Insert past range adds to end
             list.insert("woop", 6)
             expect(list.count).to eq(6)
             expect(list.to_string).to eq("dop woo doop deep boop woop")
@@ -68,7 +68,7 @@ RSpec.describe LinkedList do
     end
 
     describe "#Checkiing nodes" do
-    #Adding multiple nodes
+    #Checking existing nodes
         it "find, remove, includes? testing" do
             list = LinkedList.new
             list.append("doop")
@@ -98,6 +98,7 @@ RSpec.describe LinkedList do
             expect(list.find(2, 1)).to eq("doop")
             expect(list.find(1, 3)).to eq("woo doop deep")
             expect(list.find(0, 3)).to eq("dop woo doop")
+            expect(list.find(0, 20)).to eq("Outside of range")
 
             expect(list.includes?("deep")).to eq(true)
             expect(list.includes?("dep")).to eq(false)

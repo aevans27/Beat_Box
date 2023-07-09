@@ -36,4 +36,18 @@ RSpec.describe BeatBox do
             bb.play
         end
     end
+
+    #Play Music
+    describe "#beatbox music again" do
+        it "play beats with weird characters" do
+            bb = BeatBox.new
+            expect(bb.list.head).to eq(nil)
+            bb.append("[5] 4 3")
+            expect(bb.list.head.data).to eq("5")
+            bb.append("2 1 0")
+            expect(bb.count).to eq(6)
+
+            bb.play
+        end
+    end
 end

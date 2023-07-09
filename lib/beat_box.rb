@@ -5,7 +5,11 @@ class BeatBox
     end
 
     def append(value)
-        value_list = value.split
+        #Removes special characters
+        #Certain characters can't be played
+        string_value = value.to_s
+        clean_string = string_value.gsub(/[^0-9A-Za-z]/, ' ')
+        value_list = clean_string.split
         value_list.each do |parsed|
             @list.append(parsed)
         end
@@ -17,6 +21,6 @@ class BeatBox
 
     def play
         beat = @list.to_string
-        system("say -r 500 -v Boing #{beat}")
+        system("say -r 100 -v Boing #{beat}")
     end
 end

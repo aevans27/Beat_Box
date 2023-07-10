@@ -134,7 +134,7 @@ class LinkedList
         accepted_beats = ["deep", "doo", "ditt", "woo", "hoo", "shu",
         "doop", "boop", "dop", "dep", "woop", "tee", "0", "1", "2",
         "3", "4", "5", "6", "7", "8", "9"]
-        value = accepted_beats.any? do |beat|
+        is_beat = accepted_beats.any? do |beat|
             beat == value
         end
     end

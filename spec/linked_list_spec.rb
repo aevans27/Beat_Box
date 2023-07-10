@@ -16,7 +16,7 @@ RSpec.describe LinkedList do
             list = LinkedList.new
             list.append("doop")
             expect(list.head.data).to eq("doop")
-            expect(list.head.data.next)
+            expect(list.head.next).to eq(nil)
         end
     end
 
@@ -68,7 +68,7 @@ RSpec.describe LinkedList do
         end
     end
 
-    describe "#Checkiing nodes" do
+    describe "#Checking nodes" do
     #Checking existing nodes
         it "find, remove, includes? testing" do
             list = LinkedList.new
@@ -105,8 +105,10 @@ RSpec.describe LinkedList do
             expect(list.includes?("dep")).to eq(false)
 
             expect(list.pop).to eq("woop")
+            expect(list.count).to eq(5)
             expect(list.to_string).to eq("dop woo doop deep boop")
             expect(list.pop).to eq("boop")
+            expect(list.count).to eq(4)
             expect(list.to_string).to eq("dop woo doop deep")
 
         end

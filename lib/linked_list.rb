@@ -57,6 +57,9 @@ class LinkedList
     end
 
     def insert(value, location)
+        if contains_any?(value) == false
+            return
+        end
         if location > count
             #If user tries to insert outside of range
             #Add to end
@@ -94,7 +97,6 @@ class LinkedList
             if list_count >= location && list_count < (location + range)
                 new_string.concat(" #{current_node.data}")
             end
-            
         end
         new_string.strip
     end

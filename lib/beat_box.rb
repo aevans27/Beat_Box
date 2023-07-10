@@ -25,7 +25,9 @@ class BeatBox
         string_value = value.to_s
         clean_string = string_value.gsub(/[^0-9A-Za-z]/, ' ')
         value_list = clean_string.split
-        value_list.each do |parsed|
+        #Flipping order so right beat will be first
+        reverse_list = value_list.reverse
+        reverse_list.each do |parsed|
             @list.prepend(parsed)
         end
     end

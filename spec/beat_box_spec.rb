@@ -58,8 +58,8 @@ RSpec.describe BeatBox do
             expect(bb).to be_an_instance_of(BeatBox)
             bb.append("Mississippi")
             expect(bb.all).to eq("deep")
-            bb.prepend("tee tee tee Mississippi")
-            expect(bb.all).to eq("tee tee tee deep")
+            bb.prepend("tee dop dep Mississippi")
+            expect(bb.all).to eq("tee dop dep deep")
         end
     end
 

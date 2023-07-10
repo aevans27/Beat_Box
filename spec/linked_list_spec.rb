@@ -72,6 +72,7 @@ RSpec.describe LinkedList do
     #Checking existing nodes
         it "find, remove, includes? testing" do
             list = LinkedList.new
+            expect(list.pop).to eq("Nothing to pop")
             list.append("doop")
             expect(list.count).to eq(1)
             expect(list.to_string).to eq("doop")

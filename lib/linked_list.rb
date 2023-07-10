@@ -118,7 +118,7 @@ class LinkedList
     end
 
     def pop
-        lost_value = ""
+        lost_value = "Nothing to pop"
         if @head
             current_node = @head
             while current_node.next.next != nil

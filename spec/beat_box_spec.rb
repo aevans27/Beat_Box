@@ -81,6 +81,10 @@ RSpec.describe BeatBox do
             bb.reset_voice
             expect(bb.voice).to eq("Boing")
             bb.play
+            bb.voice = "Bubba"
+            
+            bb.play
+            expect(bb.voice).to eq("Boing")
 
 
         end

@@ -39,6 +39,9 @@ class BeatBox
     end
 
     def play
+        if contains_voice?(@voice) == false
+            @voice = "Boing"
+        end
         beat = @list.to_string
         system("say -r #{@rate} -v #{@voice} #{beat}")
     end
@@ -51,5 +54,12 @@ class BeatBox
         @voice = "Boing"
     end
 
-
+    def contains_voice?(value)
+        accepted_voices = ["Samantha", "Fred", "Junior", "Kathy",
+        "Nicky", "Ralph", "Eddy", "Flo", "Grandma", "Grandpa",
+        "Reed", "Rocko", "Sandy", "Shelley"]
+        value = accepted_voices.any? do |voice|
+            voice == value
+        end
+    end
 end

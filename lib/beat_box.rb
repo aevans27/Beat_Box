@@ -1,7 +1,10 @@
 class BeatBox
     attr_reader :list
-    def initialize
+    def initialize(beat = nil)
         @list = LinkedList.new
+        if beat != nil
+            append(beat)
+        end
     end
 
     def append(value)
@@ -13,6 +16,19 @@ class BeatBox
         value_list.each do |parsed|
             @list.append(parsed)
         end
+    end
+
+    def prepend(value)
+        string_value = value.to_s
+        clean_string = string_value.gsub(/[^0-9A-Za-z]/, ' ')
+        value_list = clean_string.split
+        value_list.each do |parsed|
+            @list.prepend(parsed)
+        end
+    end
+
+    def all
+        @list.to_string
     end
 
     def count

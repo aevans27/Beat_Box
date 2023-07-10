@@ -32,7 +32,7 @@ RSpec.describe BeatBox do
             expect(bb.list.head.data).to eq("deep")
             bb.append("woo hoo shu")
             expect(bb.count).to eq(6)
-
+            #Listen for music
             bb.play
         end
     end
@@ -48,6 +48,18 @@ RSpec.describe BeatBox do
             expect(bb.count).to eq(6)
 
             bb.play
+        end
+    end
+
+    #Initialize with beat, skip unwanted beats
+    describe "#beatbox init and skips" do
+        it "init with beat" do
+            bb = BeatBox.new("deep")
+            expect(bb).to be_an_instance_of(BeatBox)
+            bb.append("Mississippi")
+            expect(bb.all).to eq("deep")
+            bb.prepend("tee tee tee Mississippi")
+            expect(bb.all).to eq("tee tee tee deep")
         end
     end
 end

@@ -5,6 +5,9 @@ class LinkedList
     end
 
     def append(value)
+        if contains_any?(value) == false
+            return
+        end
         if @head
             current_node = @head
             new_node = Node.new(value)
@@ -41,6 +44,9 @@ class LinkedList
     end
 
     def prepend(value)
+        if contains_any?(value) == false
+            return
+        end
         if @head
             new_head = Node.new(value)
             new_head.next = @head
@@ -120,5 +126,14 @@ class LinkedList
             current_node.next = nil
         end
         lost_value
+    end
+
+    def contains_any?(value)
+        accepted_beats = ["deep", "doo", "ditt", "woo", "hoo", "shu",
+        "doop", "boop", "dop", "dep", "woop", "tee", "0", "1", "2",
+        "3", "4", "5", "6", "7", "8", "9"]
+        value = accepted_beats.any? do |beat|
+            beat == value
+        end
     end
 end

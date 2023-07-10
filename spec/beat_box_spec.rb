@@ -62,4 +62,27 @@ RSpec.describe BeatBox do
             expect(bb.all).to eq("tee tee tee deep")
         end
     end
+
+    #Change voice and speed
+    describe "#beatbox voice and speed setting change" do
+        it "voice and speed" do
+            bb = BeatBox.new("deep dop dop deep")
+            expect(bb).to be_an_instance_of(BeatBox)
+            expect(bb.all).to eq("deep dop dop deep")
+            bb.play
+            bb.rate = 100
+            expect(bb.rate).to eq(100)
+            bb.play
+            bb.voice = "Daniel"
+            expect(bb.voice).to eq("Daniel")
+            bb.play
+            bb.reset_rate
+            expect(bb.rate).to eq(500)
+            bb.reset_voice
+            expect(bb.voice).to eq("Boing")
+            bb.play
+
+
+        end
+    end
 end

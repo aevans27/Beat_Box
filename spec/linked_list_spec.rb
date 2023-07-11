@@ -2,7 +2,6 @@ require './lib/linked_list'
 require './lib/node'
 
 RSpec.describe LinkedList do
-    #Verify it inits
     describe "#linkedlist init" do
         it "exists" do
             list = LinkedList.new
@@ -11,17 +10,15 @@ RSpec.describe LinkedList do
     end
 
     describe "#Add node" do
-    #Check it adds node
         it "add doop to list" do
             list = LinkedList.new
             list.append("doop")
             expect(list.head.data).to eq("doop")
-            expect(list.head.data.next)
+            expect(list.head.next).to eq(nil)
         end
     end
 
     describe "#Add nodes" do
-    #Check it adds multiple nodes
         it "get count and doop string" do
             list = LinkedList.new
             list.append("doop")
@@ -38,7 +35,6 @@ RSpec.describe LinkedList do
         end
     end
     describe "#Add nodes to beginning and inserting" do
-    #Adding multiple nodes
         it "add to beginning and middle of linked list" do
             list = LinkedList.new
             list.append("doop")
@@ -68,10 +64,11 @@ RSpec.describe LinkedList do
         end
     end
 
-    describe "#Checkiing nodes" do
-    #Checking existing nodes
+    describe "#Checking nodes" do
         it "find, remove, includes? testing" do
             list = LinkedList.new
+            expect(list.find(0, 20)).to eq("No beats added")
+            expect(list.pop).to eq("Nothing to pop")
             list.append("doop")
             expect(list.count).to eq(1)
             expect(list.to_string).to eq("doop")
@@ -92,7 +89,7 @@ RSpec.describe LinkedList do
             expect(list.count).to eq(5)
             expect(list.to_string).to eq("dop woo doop deep boop")
 
-            list.insert("woop", 6)
+            list.insert("woop", 9)
             expect(list.count).to eq(6)
             expect(list.to_string).to eq("dop woo doop deep boop woop")
 
@@ -105,8 +102,10 @@ RSpec.describe LinkedList do
             expect(list.includes?("dep")).to eq(false)
 
             expect(list.pop).to eq("woop")
+            expect(list.count).to eq(5)
             expect(list.to_string).to eq("dop woo doop deep boop")
             expect(list.pop).to eq("boop")
+            expect(list.count).to eq(4)
             expect(list.to_string).to eq("dop woo doop deep")
 
         end

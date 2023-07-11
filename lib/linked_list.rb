@@ -5,6 +5,9 @@ class LinkedList
     end
 
     def append(value)
+        if accept_beat?(value) == false
+            return
+        end
         if @head
             current_node = @head
             new_node = Node.new(value)
@@ -41,6 +44,9 @@ class LinkedList
     end
 
     def prepend(value)
+        if accept_beat?(value) == false
+            return
+        end
         if @head
             new_head = Node.new(value)
             new_head.next = @head
@@ -51,15 +57,19 @@ class LinkedList
     end
 
     def insert(value, location)
-        if location > count
-            #If user tries to insert outside of range
-            #Add to end
+        if accept_beat?(value) == false
+            return
+        end
+        if @head == nil
             append(value)
         elsif location == 0
             prepend(value)
+        elsif location > count
+            #If user tries to insert outside of range
+            #Add to end
+            append(value)
         else
             current_node = @head
-            #Put in catch if current_node be nil
             (location -1).times do
                 current_node = current_node.next
             end
@@ -71,7 +81,7 @@ class LinkedList
 
     def find(location, range)
         new_string = ""
-        if @head.data == nil
+        if @head == nil
             return "No beats added"
         end
         if (location + range) > count
@@ -88,7 +98,6 @@ class LinkedList
             if list_count >= location && list_count < (location + range)
                 new_string.concat(" #{current_node.data}")
             end
-            
         end
         new_string.strip
     end
@@ -110,7 +119,7 @@ class LinkedList
     end
 
     def pop
-        lost_value = ""
+        lost_value = "Nothing to pop"
         if @head
             current_node = @head
             while current_node.next.next != nil
@@ -120,5 +129,14 @@ class LinkedList
             current_node.next = nil
         end
         lost_value
+    end
+
+    def accept_beat?(value)
+        accepted_beats = ["deep", "doo", "ditt", "woo", "hoo", "shu",
+        "doop", "boop", "dop", "dep", "woop", "tee", "0", "1", "2",
+        "3", "4", "5", "6", "7", "8", "9"]
+        is_beat = accepted_beats.any? do |beat|
+            beat == value
+        end
     end
 end

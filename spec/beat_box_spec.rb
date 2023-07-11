@@ -52,6 +52,9 @@ RSpec.describe BeatBox do
             bb = BeatBox.new("deep")
             expect(bb).to be_an_instance_of(BeatBox)
             bb.append("Mississippi")
+            bb.append("Bobby")
+            bb.append("Mike")
+            bb.append("Tim")
             expect(bb.all).to eq("deep")
             bb.prepend("tee dop dep Mississippi")
             expect(bb.all).to eq("tee dop dep deep")
@@ -73,8 +76,16 @@ RSpec.describe BeatBox do
             expect(bb.rate).to eq(100)
             bb.play
 
+            bb.rate = 1200
+            bb.play
+            expect(bb.rate).to eq(500)
+
             bb.voice = "Daniel"
             expect(bb.voice).to eq("Daniel")
+            bb.play
+
+            bb.voice = "Fred"
+            expect(bb.voice).to eq("Fred")
             bb.play
 
             bb.reset_rate
@@ -84,6 +95,10 @@ RSpec.describe BeatBox do
             bb.play
 
             bb.voice = "Bubba"
+            bb.play
+            expect(bb.voice).to eq("Boing")
+
+            bb.voice = "Jojojojo"
             bb.play
             expect(bb.voice).to eq("Boing")
         end

@@ -84,6 +84,10 @@ RSpec.describe BeatBox do
             expect(bb.voice).to eq("Daniel")
             bb.play
 
+            bb.voice = "Fred"
+            expect(bb.voice).to eq("Fred")
+            bb.play
+
             bb.reset_rate
             expect(bb.rate).to eq(500)
             bb.reset_voice
@@ -91,6 +95,10 @@ RSpec.describe BeatBox do
             bb.play
 
             bb.voice = "Bubba"
+            bb.play
+            expect(bb.voice).to eq("Boing")
+
+            bb.voice = "Jojojojo"
             bb.play
             expect(bb.voice).to eq("Boing")
         end

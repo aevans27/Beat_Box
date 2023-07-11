@@ -5,7 +5,7 @@ class LinkedList
     end
 
     def append(value)
-        if contains_any?(value) == false
+        if accept_beat?(value) == false
             return
         end
         if @head
@@ -44,7 +44,7 @@ class LinkedList
     end
 
     def prepend(value)
-        if contains_any?(value) == false
+        if accept_beat?(value) == false
             return
         end
         if @head
@@ -57,18 +57,19 @@ class LinkedList
     end
 
     def insert(value, location)
-        if contains_any?(value) == false
+        if accept_beat?(value) == false
             return
         end
-        if location > count
-            #If user tries to insert outside of range
-            #Add to end
+        if @head == nil
             append(value)
         elsif location == 0
             prepend(value)
+        elsif location > count
+            #If user tries to insert outside of range
+            #Add to end
+            append(value)
         else
             current_node = @head
-            #Put in catch if current_node be nil
             (location -1).times do
                 current_node = current_node.next
             end
@@ -80,7 +81,7 @@ class LinkedList
 
     def find(location, range)
         new_string = ""
-        if @head.data == nil
+        if @head == nil
             return "No beats added"
         end
         if (location + range) > count
@@ -130,7 +131,7 @@ class LinkedList
         lost_value
     end
 
-    def contains_any?(value)
+    def accept_beat?(value)
         accepted_beats = ["deep", "doo", "ditt", "woo", "hoo", "shu",
         "doop", "boop", "dop", "dep", "woop", "tee", "0", "1", "2",
         "3", "4", "5", "6", "7", "8", "9"]

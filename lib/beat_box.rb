@@ -42,7 +42,10 @@ class BeatBox
 
     def play
         if contains_voice?(@voice) == false
-            @voice = "Boing"
+            reset_voice
+        end
+        if @rate <= 0 || @rate > 1000
+            reset_rate
         end
         beat = @list.to_string
         system("say -r #{@rate} -v #{@voice} #{beat}")
